@@ -1,0 +1,18 @@
+.modal-dialog
+   .modal-content
+      .modal-header
+         h3
+          | #{object[:title]}
+          - name = object[:name]
+          - if name.present?
+             =" '#{name}'"
+      = simple_form_for object[:data], html: {class: 'form-horizontal', remote: true}, wrapper: :horizontal_input_group, wrapper_mappings: {check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input, boolean: :horizontal_boolean } do |f|
+         .modal-body
+              = f.error_notification
+
+              .form-inputs
+                = f.input :status, collection: [["Open", "Open"], ["In Progress", "InProgress"], ["Resolved", "Resolved"], ["Closed", "Closed"]]
+
+         .modal-footer
+           .form-actions
+             = f.button :submit

@@ -1,0 +1,9 @@
+.modal-dialog
+   .modal-content
+      .modal-header
+         h3
+          | #{object[:title]}
+          - name = object[:name]
+          - if name.present?
+             =" '#{name}'"
+      == render 'form', object: object[:data]

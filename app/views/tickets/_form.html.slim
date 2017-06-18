@@ -1,0 +1,11 @@
+= simple_form_for object do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :client_number
+    = f.input :subject
+    = f.input :description, as: :wysihtml5
+    / = f.input :description, as: :ckeditor, input_html: { ckeditor: { toolbar: 'Full' } }
+
+  .form-actions
+    = f.button :submit

@@ -1,0 +1,28 @@
+table#example1.table.table-bordered.table-striped
+            thead
+              tr
+                th Email
+                th First Name
+                th Last Name
+                th Role
+                th Action
+            tbody
+            - if users.present?
+               - users.each do |user|
+                 tr
+                   td = user.email
+                   td = user.first_name
+                   td = user.last_name
+                   td = user.role_name
+                   td
+                     = link_to 'Show', user_path(user), {:class => "btn btn-info btn-xs", remote: true}
+                     | &nbsp;
+                     = link_to 'Edit', edit_user_path(user), {:class => "btn btn-warning btn-xs", remote: true}
+                     | &nbsp;
+                     = link_to 'Delete', delete_user_path(user),  {:class => "btn btn-danger btn-xs", remote: true}
+            - else
+               tr
+                  td.blank-text*{colspan: 6} Data Not Found
+
+.right= paginate users if users.present?
+

@@ -1,0 +1,15 @@
+= simple_form_for ticket, url: post_reply_ticket_path, method: :post do |f|
+            = f.input :parent_id, as: :hidden, input_html: {value: ticket.id}
+            = f.input :subject, as: :hidden
+            = f.input :client_number, as: :hidden
+
+            table.table-responsive*{style: "width: 100%; border:1px solid #ccc;"}
+               tr.btn-primary.title_ticket
+                  td &nbsp; Post a Reply
+               tr
+                  td.description_ticket
+                     .form-inputs
+                        = f.input :description, as: :wysihtml5, input_html: {value: nil}
+                     .form-actions
+                        = f.button :submit, "Post"
+

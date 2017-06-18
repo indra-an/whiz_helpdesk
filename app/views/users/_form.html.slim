@@ -1,0 +1,11 @@
+= simple_form_for object.becomes(User), html: {class: 'form-horizontal', remote: true}, wrapper: :horizontal_input_group, wrapper_mappings: {check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input, boolean: :horizontal_boolean } do |f|
+  .modal-body
+    ul.errors
+    = f.input :email
+    = f.input :password unless object.email?
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :type, collection: [["Super Administrator", "Superadmin"], ["Operator", "Operator"], ["Engineer", "Engineer"]], selected: (object.type?) ? object.type : "Operator", label: "Role"
+  .modal-footer
+    = f.button :submit, class: "btn btn-primary"
+    = link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"}

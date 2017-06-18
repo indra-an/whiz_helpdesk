@@ -1,0 +1,2 @@
+$("#page-modal").html("<%= escape_javascript(render partial: 'shared/modal_form', locals: {object: {title: 'Edit User', name: @user.email, data: @user}}) %>")
+$("#page-modal").modal("show")

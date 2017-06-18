@@ -1,0 +1,2 @@
+$("#page-modal").html("<%= escape_javascript(render partial: 'shared/modal_form', locals: {object: {title: 'New Ticket', data: @ticket}}) %>")
+$("#page-modal").modal("show")

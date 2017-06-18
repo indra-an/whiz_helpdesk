@@ -1,0 +1,2 @@
+$("#page-modal").html("<%= escape_javascript(render partial: 'shared/modal_delete', locals: {object: {title: 'User', name: @user.email, delete_path: user_path(@user)}}) %>")
+$("#page-modal").modal("show")

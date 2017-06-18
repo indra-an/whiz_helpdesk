@@ -1,0 +1,34 @@
+ .col-xs-9
+   .box.box-primary
+     .box-header
+       .box-title
+         | Ticket
+       .box-body
+         table.table-responsive*{style: "width: 100%; border:1px solid #ccc;"}
+            tr.btn-primary.title_ticket
+               td
+                  = "&nbsp; [##{ticket.number}] ".html_safe
+                  = ticket.subject
+            tr
+               td.description_ticket
+                  = ticket.description.html_safe
+                  br
+                  br
+                  p.well.bg-info.spacer-top.right-text
+                     = ticket.created_info
+                  hr
+            - if reply_tickets.present?
+               - reply_tickets.each do | reply |
+                     tr
+                        td.description_ticket
+                           = reply.description.html_safe
+                           br
+                           br
+                           p.well.bg-info.spacer-top.right-text
+                              = reply.created_info
+                           hr
+
+         br
+         br
+         - if can? :post_reply, Ticket
+            = render "post_reply", ticket: ticket

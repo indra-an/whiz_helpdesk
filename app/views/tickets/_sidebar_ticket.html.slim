@@ -1,0 +1,12 @@
+ .col-xs-3
+   .box
+     .box-header
+       .box-title
+         | Detail Info
+       .box-body
+         = simple_form_for ticket do |f|
+           .form-inputs
+             = f.input :client_number, input_html: { value: ticket.client_number }, as: :fake, disabled: true
+             = f.input :user, input_html: { value: [ticket.user.first_name, ticket.user.last_name].reject(&:blank?).join(" ") }, as: :fake, disabled: true, label: "Author"
+
+

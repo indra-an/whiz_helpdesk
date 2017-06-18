@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title Helpdesk
+    = csrf_meta_tags
+
+    = stylesheet_link_tag  'application', media: 'all', "data-turbolinks-track" => true
+    = stylesheet_link_tag  'http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css'
+
+    = javascript_include_tag 'application', "data-turbolinks-track" => true
+
+  body.hold-transition.login-page
+   .login-box
+      .login-logo
+         a href="#"
+            b Helpdesk
+      .login-box-body
+         = yield

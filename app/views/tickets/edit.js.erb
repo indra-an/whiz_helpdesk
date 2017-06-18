@@ -1,0 +1,2 @@
+$("#page-modal").html("<%= escape_javascript(render partial: 'form_status', locals: {object: {title: 'Edit Ticket', name: @ticket.number, data: @ticket}}) %>")
+$("#page-modal").modal("show")

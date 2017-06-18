@@ -1,0 +1,33 @@
+.modal-dialog
+   .modal-content
+      .modal-header
+         h3 Show User
+            '#{user.email}'
+      .modal-body
+        ul.errors
+
+        table#form-table
+          tr
+            td Email
+            td
+               = ": "
+               = user.email
+          tr
+            td First Name
+            td
+               = ": "
+               = user.first_name
+          tr
+            td Last Name
+            td
+               = ": "
+               = user.last_name
+          tr
+            td Role
+            td
+               = ": "
+               = user.role_name
+
+      .modal-footer
+        = link_to "Close", "#", class: "btn", data: {dismiss: "modal"}
+

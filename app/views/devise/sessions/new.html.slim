@@ -1,0 +1,26 @@
+- flash.each do |name, msg|
+  - if msg.class == Array
+    - msg.each do |message|
+      .alert.alert-danger.alert-dismissable
+        button.close[type="button" data-dismiss="alert" aria-hidden="true"]
+          | ×
+        p
+          | Error :
+          = message
+  - else
+    .alert.alert-danger.alert-dismissable
+      button.close[type="button" data-dismiss="alert" aria-hidden="true"]
+        | ×
+      p
+        = msg
+p.login-box-msg
+  | Sign in to start your sessions
+br
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .form-inputs
+    = f.input :email, required: false, autofocus: true
+    = f.input :password, required: false
+    / = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+  .form-actions
+    = f.button :submit, "Log in", class: 'btn-primary btn-block btn-flat'
+/ = render "devise/shared/links"

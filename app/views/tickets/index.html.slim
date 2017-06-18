@@ -1,0 +1,29 @@
+section.content-header
+  h1
+    | Ticket
+    / small advanced tables
+  ol.breadcrumb
+    li
+      a href=root_path
+        i.fa.fa-dashboard
+        | Dashboard
+    li.active Ticket
+/! Main content
+section.content
+  .row
+    .col-xs-12
+      .box
+        .box-header
+          .box-title
+            = link_to 'New Ticket', new_ticket_path, {:class => "btn btn-block btn-primary"} if can? :create, Ticket
+          = form_tag tickets_path, method: :get, :class => "search-form right"
+            .input-group
+              = text_field_tag "conditions[search]", @conditions, :class => "form-control", :placeholder => "Search..."
+              span.input-group-btn
+                button#search-btn.btn.btn-flat type="submit"
+                  i.fa.fa-search
+
+        .box-body
+          = render "list", tickets: @tickets
+
+  #page-modal.modal.fade

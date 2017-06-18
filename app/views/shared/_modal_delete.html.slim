@@ -1,0 +1,16 @@
+- unless defined?(remote)
+  - remote = true
+- else
+  - remote = true if remote.nil?
+.modal-dialog
+   .modal-content
+      .modal-header
+         h3 Delete #{object[:title]}
+      .modal-body
+        ul.errors
+        | Are you sure you wish to delete&nbsp;
+        b = object[:name]
+        | ?
+      .modal-footer
+        = link_to "Yes, Delete This #{object[:title]}", object[:delete_path], method: :delete, remote: remote, class: "btn btn-danger"
+        = link_to "No, Please Don't", "#", class: "btn btn-default", data: {dismiss: "modal"}

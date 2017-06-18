@@ -1,0 +1,37 @@
+- if user_signed_in?
+      aside.main-sidebar
+        /! sidebar: style can be found in sidebar.less
+        section.sidebar
+          /! Sidebar user panel
+          .user-panel
+            .pull-left.image
+              = image_tag 'user2-160x160.png', :class => "img-circle"
+            .pull-left.info
+              p
+                = current_user.email[0, current_user.email.index("@")]
+              a[href="#"]
+                i.fa.fa-circle.text-success
+                |  Online
+          /! search form
+          ul.sidebar-menu
+            li.header
+              | MAIN NAVIGATION
+
+            li class=(controller.controller_name == 'dashboards' ? 'active' : '')
+              = link_to root_path, :class => "nav-links" do
+                i.fa.fa-dashboard
+                span
+                  | Dashboard
+            - if can? :index, Ticket
+              li class=(controller.controller_name == 'tickets' ? 'active' : '')
+                = link_to tickets_path, :class => "nav-links" do
+                  i.fa.fa-tag
+                  span
+                    | Ticket
+
+            - if can? :index, User
+              li class=(controller.controller_name == 'users' ? 'active' : '')
+                = link_to users_path, :class => "nav-links" do
+                  i.fa.fa-users
+                  span
+                    | User

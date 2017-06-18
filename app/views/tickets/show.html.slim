@@ -1,0 +1,17 @@
+section.content-header
+  h1
+    | Tickets
+    / small advanced tables
+  ol.breadcrumb
+    li
+      a href=root_path
+        i.fa.fa-dashboard
+        | Dashboard
+    li.active Tickets
+/! Main content
+section.content
+  .row
+    = render "sidebar_ticket", ticket: @ticket
+    = render "attributes", ticket: @ticket, reply_tickets: @ticket.reply
+
+#page-modal.modal.fade
